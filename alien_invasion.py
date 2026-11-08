@@ -23,6 +23,9 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
 
+        # Start Alien Invasion in an inactive state.
+        self.game_active = False
+
     def run_game(self):
         """Start the main loop for the game."""
         while True:
