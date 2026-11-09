@@ -80,9 +80,6 @@ class AlienInvasion:
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
 
-        # Start Alien Invasion in an inactive state.
-        self.game_active = False
-
     def run_game(self):
         """Start the main loop for the game."""
         while True:
@@ -118,6 +115,7 @@ class AlienInvasion:
 
             # Reset the game statistics
             self.stats.reset_stats()
+            self.sb.prep_score()
             self.game_active = True
 
             # Get rid of any remaining bullets and aliens 
@@ -171,6 +169,10 @@ class AlienInvasion:
         """Respond to bullet-alien collisions."""
         # Remove any bullets and aliens that have collided.
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if collisions:
+            self.stats.score += self.settings.alien_points
+            self.sb.prep_score()
         
         if not self.aliens:
             # Destroy existing bullets and create new fleet.
