@@ -1,3 +1,6 @@
+## Video Link (Milestone #1): 
+https://youtu.be/qbKPF_o_e5A
+
 # Tutorial - Alien Invasion
 This is the repository for the Tutorial: Alien Invasion
 
