@@ -1,3 +1,18 @@
+"""
+Name: Michael Ko
+File Name: alien.py
+Program Name: Alien Shooter (Retro) - Track #2
+Class: CSCI-1511-W03L (Python Programming)
+Professor: Travis Burke
+Date: 11/15/2026
+Purpose: Defines the Alien class. Alien(s) move side to side while moving down.
+Starter Code: Based on Textbook
+- Watched Video(s) in Blackboard under Chapter 12: Alien Invasion Tutorials
+Source(s) for Alien Assets: 
+- https://www.vecteezy.com/vector-art/1391609-set-of-video-game-space-icons
+- https://mixkit.co/free-sound-effects/space-shooter/
+"""
+
 import pygame 
 from pygame.sprite import Sprite
 

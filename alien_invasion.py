@@ -1,13 +1,17 @@
 """
 Name: Michael Ko
-File Name: main.py
+File Name: alien_invasion.py
+Program Name: Alien Shooter (Retro) - Track #2
 Class: CSCI-1511-W03L (Python Programming)
 Professor: Travis Burke
-Date: 11/04/2026
-Purpose: main.py handles everything the user sees and imports the class from tracker.py
+Date: 11/15/2026
+Purpose: Main game file. Sets up the window, custom background, ship, aliens, laser sound. Runs the game loop.
+- Some code has been isolated (Code Isolation) for Milestone #1. 
 Starter Code: Used the textbook as well as outside sources (websites) to learn more abot topics covered in textbook. 
+- Watched Video(s) in Blackboard under Chapter 12: Alien Invasion Tutorials
 Source(s) for Alien Assets: 
 - https://www.vecteezy.com/vector-art/1391609-set-of-video-game-space-icons
+- https://mixkit.co/free-sound-effects/space-shooter/
 """
 
 import sys
@@ -172,24 +176,6 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
-
-    def _fire_bullet(self):
-        """Create a new bullet and add it to the bullets group."""
-        if len(self.bullets) < self.settings.bullets_allowed:
-            new_bullet = Bullet(self)
-            self.bullets.add(new_bullet)
-
-    def _update_bullets(self):
-        """Update position of bullets and get rid of old bullets."""
-        # Update bullet positions.
-        self.bullets.update()
-
-        # Get rid of bullets that have disappeared.
-        for bullet in self.bullets.copy():
-            if bullet.rect.bottom <= 0:
-                self.bullets.remove(bullet)
-
-        self._check_bullet_alien_collisions()
 
     # def _check_bullet_alien_collisions(self):
     #     """Respond to bullet-alien collisions."""
