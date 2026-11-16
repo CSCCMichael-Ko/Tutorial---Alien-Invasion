@@ -12,6 +12,8 @@ class Settings:
 
         # Ship settings
         self.ship_limit = 3
+        self.ship_file = Path.cwd() / 'images' / 'spaceship.png'
+
 
         # Bullet settings
         self.bullet_width = 15
@@ -22,6 +24,7 @@ class Settings:
 
         # Alien settings 
         self.fleet_drop_speed = 10
+        self.alien_file = Path.cwd() / 'images'  'alien0.png'
 
         # How quickly the game speeds up
         self.speedup_scale = 1.1
