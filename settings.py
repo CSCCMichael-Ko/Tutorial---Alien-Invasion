@@ -1,3 +1,5 @@
+from pathlib import Path
+
 class Settings:
     """A class to store all settings for Alien Invasion."""
 
@@ -26,6 +28,9 @@ class Settings:
         self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
+
+        # Background Image
+        self.bg_file = Path(__file__).parent / 'images' / 'background.png'
 
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
