@@ -1,3 +1,17 @@
+"""
+Name: Michael Ko
+File Name: ship.py
+Program Name: Alien Shooter (Retro) - Track #2
+Class: CSCI-1511-W03L (Python Programming)
+Professor: Travis Burke
+Date: 11/15/2026
+Purpose: Defines the Ship class, loads custom ship and moves it left and right along the bottom of the screen
+Starter Code: Based on the Textbook
+Source(s) for Alien Assets: 
+- https://www.vecteezy.com/vector-art/1391609-set-of-video-game-space-icons
+- https://mixkit.co/free-sound-effects/space-shooter/
+"""
+
 import pygame
 from pygame.sprite import Sprite
 
@@ -12,7 +26,7 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load(self.settings.ship_file)
         self.rect = self.image.get_rect()
 
         # Start each new ship at the bottom center of the screen.

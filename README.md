@@ -1,3 +1,6 @@
+## Video Link (Milestone #1): 
+https://youtu.be/qbKPF_o_e5A
+
 # Tutorial - Alien Invasion
 This is the repository for the Tutorial: Alien Invasion
 
@@ -18,3 +21,6 @@ For Track 2, I could make it so that different types of aliens appear. I could a
 There will be audio. 
 Other Idea(s):
 - Different Levels = Different Background
+
+## Decision:
+After spending time deciding which track to do, I have decided to do Track 2. 

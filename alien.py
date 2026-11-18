@@ -1,3 +1,18 @@
+"""
+Name: Michael Ko
+File Name: alien.py
+Program Name: Alien Shooter (Retro) - Track #2
+Class: CSCI-1511-W03L (Python Programming)
+Professor: Travis Burke
+Date: 11/15/2026
+Purpose: Defines the Alien class. Alien(s) move side to side while moving down.
+Starter Code: Based on Textbook
+- Watched Video(s) in Blackboard under Chapter 12: Alien Invasion Tutorials
+Source(s) for Alien Assets: 
+- https://www.vecteezy.com/vector-art/1391609-set-of-video-game-space-icons
+- https://mixkit.co/free-sound-effects/space-shooter/
+"""
+
 import pygame 
 from pygame.sprite import Sprite
 
@@ -11,7 +26,7 @@ class Alien(Sprite):
         self.settings = ai_game.settings
 
         # Load the alien image and set its rect attribute.
-        self.image = pygame.image.load('images/alien.bmp')
+        self.image = pygame.image.load(self.settings.alien_file)
         self.rect = self.image.get_rect()
 
         # Start each new alien near the top left of the screen.
