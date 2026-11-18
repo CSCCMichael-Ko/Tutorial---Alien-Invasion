@@ -40,7 +40,7 @@ class Arsenal:
         for bullet in self.arsenal:
             bullet.draw_bullet()
 
-    def fire_bullet(self):
+    def fire_bullets(self):
         """Fires a new laser if under the limit. Return True if one fired."""
         if len(self.arsenal) < self.settings.bullets_allowed:
             self.arsenal.add(Bullet(self.ai_game))

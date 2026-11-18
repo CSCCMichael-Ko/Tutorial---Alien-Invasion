@@ -14,10 +14,11 @@ class Settings:
         self.ship_limit = 3
 
         # Bullet settings
-        self.bullet_width = 3
-        self.bullet_height = 15
-        self.bullet_color = (60, 60, 60)
+        self.bullet_width = 15
+        self.bullet_height = 45
         self.bullets_allowed = 3
+        self.bullet_file = Path.cwd() / 'images' / 'laser.png'
+        self.laser_sound_file = Path.cwd() / 'sound' / 'laser_fire.wav'
 
         # Alien settings 
         self.fleet_drop_speed = 10
@@ -51,4 +52,3 @@ class Settings:
         self.alien_speed *= self.speedup_scale
 
         self.alien_points = int(self.alien_points * self.score_scale)
-        print(self.alien_points)

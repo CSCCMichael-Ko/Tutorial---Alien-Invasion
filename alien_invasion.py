@@ -22,6 +22,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from arsenal import Arsenal
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -49,7 +50,9 @@ class AlienInvasion:
         self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
-        self.bullets = pygame.sprite.Group()
+        self.arsenal = Arsenal(self)
+        self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound_file)
+        self.laser_sound.set_volume(0.5)
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
@@ -105,7 +108,8 @@ class AlienInvasion:
 
             if self.game_active:
                 self.ship.update()
-                self._update_bullets()
+                self.arsenal.update_arsenal()
+                self._check_bullet_alien_collisions()
                 self._update_aliens()
 
             self._update_screen()
@@ -139,7 +143,7 @@ class AlienInvasion:
             self.game_active = True
 
             # Get rid of any remaining bullets and aliens 
-            self.bullets.empty()
+            self.arsenal.arsenal.empty()
             self.aliens.empty()
 
             # Create a new fleet and center the ship
@@ -158,7 +162,9 @@ class AlienInvasion:
         elif event.key == pygame.K_q:
             sys.exit()
         elif event.key == pygame.K_SPACE:
-            self._fire_bullet()
+            if self.arsenal.fire_bullets():
+                self.laser_sound.play()
+                self.laser_sound.fadeout(250)
 
     def _check_keyup_events(self, event):
         """Respond to key releases."""
@@ -188,7 +194,7 @@ class AlienInvasion:
     def _check_bullet_alien_collisions(self):
         """Respond to bullet-alien collisions."""
         # Remove any bullets and aliens that have collided.
-        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        collisions = pygame.sprite.groupcollide(self.arsenal.arsenal, self.aliens, True, True)
 
         if collisions:
             for aliens in collisions.values():
@@ -198,7 +204,7 @@ class AlienInvasion:
         
         if not self.aliens:
             # Destroy existing bullets and create new fleet.
-            self.bullets.empty()
+            self.arsenal.arsenal.empty()
             self._create_fleet()
             self.settings.increase_speed()
 
@@ -214,7 +220,7 @@ class AlienInvasion:
             self.sb.prep_ships()
             
             # Get rid of any remaining bullets and aliens.
-            self.bullets.empty()
+            self.arsenal.arsenal.empty()
             self.aliens.empty()
             
             # Create a new fleet and center the ship.
@@ -242,8 +248,7 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         self.screen.blit(self.bg, (0, 0))
-        for bullet in self.bullets.sprites():
-            bullet.draw_bullet()
+        self.arsenal.draw()
         self.ship.blitme()
         self.aliens.draw(self.screen)
 
